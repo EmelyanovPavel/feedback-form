@@ -3,6 +3,7 @@ declare(strict_types=1);
 require __DIR__ . '/config/database.php';
 use Config\Database;
 print_r(PDO::getAvailableDrivers());
+
 try {
     $db = new Database();
     $pdo = $db->getPdo();

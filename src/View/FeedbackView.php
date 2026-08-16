@@ -9,7 +9,6 @@
 <body>  
     <main class="container">
         <h1>Обратная связь</h1>
-
         <section class="form-section">
             <form id="feedback-form" novalidate>
                 <div class="form-group">
@@ -40,7 +39,6 @@
             <div id="messages-list">Загрузка...</div>
         </section>
     </main>
-
     <script type="module" src="js/main.js"></script> 
 </body>  
 </html>  

@@ -3,7 +3,6 @@ class FeedbackApp {
     this.form = document.getElementById('feedback-form');
     this.messagesList = document.getElementById('messages-list');
     this.statusEl = document.getElementById('form-status');
-
     this.bindEvents();
     this.loadMessages();
   }
@@ -53,10 +52,14 @@ class FeedbackApp {
       this.statusEl.classList.add('success');
       this.form.reset();
       this.loadMessages(); // обновить список
+
     } catch (err) {
+
       this.statusEl.textContent = err.message;
       this.statusEl.classList.add('error');
+
     } finally {
+
       if (btn) btn.disabled = false;
     }
   }
@@ -66,6 +69,7 @@ class FeedbackApp {
       const res = await fetch('index.php?action=list');
       const items = await res.json();
       this.renderMessages(items);
+
     } catch (e) {
       console.error('Failed to load messages:', e);
       this.messagesList.textContent = 'Не удалось загрузить сообщения.';
@@ -77,6 +81,7 @@ class FeedbackApp {
       this.messagesList.textContent = 'Нет сообщений.';
       return;
     }
+
     if (items.length === 0) {
       this.messagesList.textContent = 'Пока нет сообщений.';
       return;
@@ -87,15 +92,13 @@ class FeedbackApp {
     items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'message-card';
-
+      
       // Защита от XSS: используем textContent, а не innerHTML
       const meta = document.createElement('div');
       meta.className = 'message-meta';
       meta.textContent = `От: ${this.escapeHtml(item.full_name)} (${item.email}) • ${new Date(item.created_at).toLocaleString()}`;
-
       const msg = document.createElement('div');
       msg.textContent = this.escapeHtml(item.message); // XSS-защита
-
       card.appendChild(meta);
       card.appendChild(msg);
       this.messagesList.appendChild(card);

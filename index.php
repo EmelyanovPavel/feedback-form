@@ -12,6 +12,5 @@ use Controller\FeedbackController;
 $db = new Database();
 $model = new FeedbackModel($db);
 $controller = new FeedbackController($model);
-
 $controller->handleRequest(); 
 ?>

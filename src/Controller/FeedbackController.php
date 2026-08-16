@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace Controller;
-
 use Model\FeedbackModel;
 use InvalidArgumentException;
 
@@ -24,7 +23,6 @@ class FeedbackController
                 $fullName = trim($_POST['full_name'] ?? '');
                 $email    = trim($_POST['email'] ?? '');
                 $message  = trim($_POST['message'] ?? '');
-
                 $this->model->save($fullName, $email, $message);
 
                 http_response_code(201);

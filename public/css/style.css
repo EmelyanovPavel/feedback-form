@@ -89,6 +89,7 @@ button:disabled {
     margin-top: 0.7rem;
     font-weight: 500;
 }
+
 .status.success { color: #16a34a; }
 .status.error { color: var(--danger); }
 
